@@ -6,7 +6,6 @@ import (
 	"github.com/docopt/docopt-go"
 )
 
-const Version = `0.0.0`
 const usage = `superb.
 
 Usage:
