@@ -1,8 +1,6 @@
 package main
 
 import (
-	"fmt"
-
 	"github.com/docopt/docopt-go"
 )
 
@@ -22,6 +20,6 @@ func main() {
 	arguments, _ := docopt.Parse(usage, nil, false, Version, false)
 
 	if arguments["--help"] == true {
-		fmt.Println(usage)
+		printWarn(usage)
 	}
 }
