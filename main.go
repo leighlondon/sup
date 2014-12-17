@@ -11,6 +11,6 @@ func main() {
 	if arguments["--help"] == true {
 		printWarn(usage)
 	} else if arguments["--version"] == true {
-		printWarn(Version)
+		printWarn(VersionString)
 	}
 }
