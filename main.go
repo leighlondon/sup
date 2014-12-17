@@ -6,9 +6,11 @@ import (
 
 func main() {
 
-	arguments, _ := docopt.Parse(usage, nil, false, Version, false)
+	arguments, _ := docopt.Parse(usage, nil, false, "", false)
 
 	if arguments["--help"] == true {
 		printWarn(usage)
+	} else if arguments["--version"] == true {
+		printWarn(Version)
 	}
 }
