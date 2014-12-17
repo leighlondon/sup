@@ -7,6 +7,6 @@ Usage:
   sup [options]
 
 Options:
-  -h --help   Show this screen.
+  -h --help       Show this screen.
   -v --version    Show the version.
 `
