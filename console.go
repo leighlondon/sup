@@ -11,14 +11,6 @@ func printWarn(s string) {
 }
 
 func fixNewline(s string) string {
-
-	var output string
-
-	if strings.HasSuffix(s, "\n") {
-		output = s
-	} else {
-		output = s + "\n"
-	}
-
-	return output
+	output := strings.TrimSpace(s)
+	return output + "\n"
 }
