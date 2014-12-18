@@ -17,10 +17,10 @@ func TestNewlineNotAddedWhenPresent(t *testing.T) {
 
 func TestNewlineAddedWhenNeeded(t *testing.T) {
 	// Append a newline if it's not present.
-	hasNewline := "no newline"
-	newString := fixNewline(hasNewline)
+	noNewline := "no newline"
+	newString := fixNewline(noNewline)
 
-	if newString != hasNewline+"\n" {
+	if newString != noNewline+"\n" {
 		t.Error("didn't add newline when needed")
 	}
 }
