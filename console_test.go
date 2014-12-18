@@ -24,3 +24,13 @@ func TestNewlineAddedWhenNeeded(t *testing.T) {
 		t.Error("didn't add newline when needed")
 	}
 }
+
+func TestExcessWhitespaceRemoved(t *testing.T) {
+	// Too many extra lines should be removed and trimmed.
+	tooMany := "too many newlines"
+	newString := fixNewline(tooMany + "\n\n\n")
+
+	if newString != tooMany+"\n" {
+		t.Error("didn't remove the excess whitespace")
+	}
+}
