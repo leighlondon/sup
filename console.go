@@ -7,6 +7,10 @@ import (
 )
 
 func printWarn(s string) {
+	fmt.Fprintf(os.Stderr, fixNewline(s))
+}
+
+func fixNewline(s string) string {
 
 	var output string
 
@@ -16,5 +20,5 @@ func printWarn(s string) {
 		output = s + "\n"
 	}
 
-	fmt.Fprintf(os.Stderr, output)
+	return output
 }
