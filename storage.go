@@ -52,14 +52,12 @@ func loadItems(bytes []byte) map[string]string {
 
 func makeBytes(data map[string]string) []byte {
 
-	var b []byte
-
-	b, err := json.Marshal(data)
+	bytes, err := json.Marshal(data)
 
 	if err != nil {
 		printWarn("unable to marshal data")
 		os.Exit(1)
 	}
 
-	return b
+	return bytes
 }
