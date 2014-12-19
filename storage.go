@@ -21,8 +21,10 @@ func save(filename string, data map[string]string) {
 	saveFile(filename, bytes)
 }
 
+// Read a file by filename into memory as bytes.
 func readFile(filename string) []byte {
 
+	// Read in the file as bytes using ioutil.
 	bytes, err := ioutil.ReadFile(filename)
 
 	if err != nil {
@@ -33,8 +35,11 @@ func readFile(filename string) []byte {
 	return bytes
 }
 
+// Save some bytes to a file.
 func saveFile(filename string, data []byte) {
 
+	// Need to provide the permissions even if file already exists.
+	// The default permissions to be used will be 0644.
 	err := ioutil.WriteFile(filename, data, 0644)
 
 	if err != nil {
@@ -43,10 +48,12 @@ func saveFile(filename string, data []byte) {
 	}
 }
 
+// Load bytes into a data structure.
 func loadItems(bytes []byte) map[string]string {
 
+	// The data structure internally is a map from strings to strings.
 	data := make(map[string]string)
-
+	// Unmarshal the data from JSON-as-bytes into the map.
 	err := json.Unmarshal(bytes, &data)
 
 	if err != nil {
@@ -57,8 +64,10 @@ func loadItems(bytes []byte) map[string]string {
 	return data
 }
 
+// Convert a data structure into byte format.
 func makeBytes(data map[string]string) []byte {
 
+	// Marshal the map into JSON, as bytes.
 	bytes, err := json.Marshal(data)
 
 	if err != nil {
