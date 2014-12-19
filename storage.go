@@ -26,6 +26,16 @@ func readFile(filename string) []byte {
 	return bytes
 }
 
+func saveFile(filename string, data []byte) {
+
+	err := ioutil.WriteFile(filename, data, 0644)
+
+	if err != nil {
+		printWarn("problem saving file")
+		os.Exit(1)
+	}
+}
+
 func loadItems(bytes []byte) map[string]string {
 
 	data := make(map[string]string)
@@ -38,4 +48,18 @@ func loadItems(bytes []byte) map[string]string {
 	}
 
 	return data
+}
+
+func makeBytes(data map[string]string) []byte {
+
+	var b []byte
+
+	b, err := json.Marshal(data)
+
+	if err != nil {
+		printWarn("unable to marshal data")
+		os.Exit(1)
+	}
+
+	return b
 }
