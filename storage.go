@@ -14,6 +14,11 @@ func load(filename string) map[string]string {
 	return data
 }
 
+func save(filename string, data map[string]string) {
+	bytes := makeBytes(data)
+	saveFile(filename, bytes)
+}
+
 func readFile(filename string) []byte {
 
 	bytes, err := ioutil.ReadFile(filename)
