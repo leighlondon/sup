@@ -6,6 +6,14 @@ import (
 	"os"
 )
 
+func load(filename string) map[string]string {
+
+	data := readFile(filename)
+	items := loadItems(data)
+
+	return items
+}
+
 func readFile(filename string) []byte {
 
 	data, err := ioutil.ReadFile(filename)
