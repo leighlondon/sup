@@ -8,29 +8,29 @@ import (
 
 func load(filename string) map[string]string {
 
-	data := readFile(filename)
-	items := loadItems(data)
+	bytes := readFile(filename)
+	data := loadItems(bytes)
 
-	return items
+	return data
 }
 
 func readFile(filename string) []byte {
 
-	data, err := ioutil.ReadFile(filename)
+	bytes, err := ioutil.ReadFile(filename)
 
 	if err != nil {
 		printWarn("unable to read file")
 		os.Exit(1)
 	}
 
-	return data
+	return bytes
 }
 
-func loadItems(input []byte) map[string]string {
+func loadItems(bytes []byte) map[string]string {
 
 	data := make(map[string]string)
 
-	err := json.Unmarshal(input, &data)
+	err := json.Unmarshal(bytes, &data)
 
 	if err != nil {
 		printWarn("unable to load data")
