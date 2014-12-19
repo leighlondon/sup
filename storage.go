@@ -7,7 +7,7 @@ import (
 )
 
 // Load the data stored in a file.
-func load(filename string) map[string]string {
+func Load(filename string) map[string]string {
 	// Load the data in as bytes, and then into a data structure.
 	bytes := readFile(filename)
 	data := loadItems(bytes)
@@ -15,7 +15,7 @@ func load(filename string) map[string]string {
 }
 
 // Save the data to a file.
-func save(filename string, data map[string]string) {
+func Save(filename string, data map[string]string) {
 	// Marshal the data structure into bytes, and then save to a file.
 	bytes := makeBytes(data)
 	saveFile(filename, bytes)
