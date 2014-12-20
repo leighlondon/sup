@@ -6,6 +6,10 @@ import (
 	"strings"
 )
 
+func printOut(s string) {
+	fmt.Fprintf(os.Stdout, fixNewline(s))
+}
+
 func printWarn(s string) {
 	fmt.Fprintf(os.Stderr, fixNewline(s))
 }
