@@ -1,3 +1,10 @@
+// The 'storage' is just a JSON file, but the interface should be (and is)
+// more generic, and can be swapped out for other backends so long as they
+// support a simple key-value model.
+//
+// It only really needs to support the two "public" functions:
+//   Load(filename) data
+//   Save(filename, data)
 package main
 
 import (
