@@ -3,6 +3,7 @@ package main
 const usage = `superb.
 
 Usage:
+  sup <key>
   sup <key> <value>
   sup [options]
 

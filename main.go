@@ -19,4 +19,21 @@ func main() {
 		printWarn(VersionString)
 		os.Exit(0)
 	}
+
+	// Load in the data file.
+	data := Load("test.json")
+
+	// Need to use a type assertion for a string on the "key" argument.
+	key, ok := arguments["<key>"].(string)
+	if !ok {
+		// No key provided, just give the usage screen and exit.
+		printWarn(usage)
+		os.Exit(0)
+	}
+
+	if value, ok := data[key]; ok {
+		printOut(value)
+	} else {
+		printWarn("not found")
+	}
 }
