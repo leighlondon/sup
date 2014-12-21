@@ -31,8 +31,15 @@ func main() {
 		os.Exit(0)
 	}
 
-	if value, ok := data[key]; ok {
-		printOut(value)
+	// If the "value" argument field is present just save the key:value
+	// pair into the storage.
+	if value, ok := arguments["<value>"].(string); ok {
+		data[key] = value
+		Save("test.json", data)
+	}
+
+	if v, ok := data[key]; ok {
+		printOut(v)
 	} else {
 		printWarn("not found")
 	}
