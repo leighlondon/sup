@@ -48,6 +48,10 @@ func fileNotExists(filename string) bool {
 // Read a file by filename into memory as bytes.
 func readFile(filename string) []byte {
 
+	if fileNotExists(filename) == true {
+		return nil
+	}
+
 	// Read in the file as bytes using ioutil.
 	bytes, err := ioutil.ReadFile(filename)
 
@@ -77,6 +81,11 @@ func loadItems(bytes []byte) map[string]string {
 
 	// The data structure internally is a map from strings to strings.
 	data := make(map[string]string)
+
+	if bytes == nil {
+		return data
+	}
+
 	// Unmarshal the data from JSON-as-bytes into the map.
 	err := json.Unmarshal(bytes, &data)
 
