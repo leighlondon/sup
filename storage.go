@@ -28,6 +28,19 @@ func Save(filename string, data map[string]string) {
 	saveFile(filename, bytes)
 }
 
+func fileNotExists(filename string) bool {
+
+	_, err := os.Stat(filename)
+
+	if err != nil {
+		if os.IsNotExist(err) {
+			return true
+		}
+	}
+
+	return false
+}
+
 // Read a file by filename into memory as bytes.
 func readFile(filename string) []byte {
 
