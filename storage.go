@@ -28,16 +28,20 @@ func Save(filename string, data map[string]string) {
 	saveFile(filename, bytes)
 }
 
+// Check if a file does not exist.
 func fileNotExists(filename string) bool {
 
+	// Just stat the filename and get the error.
 	_, err := os.Stat(filename)
 
 	if err != nil {
+		// Check if the error says that it doesn't exist.
 		if os.IsNotExist(err) {
 			return true
 		}
 	}
 
+	// If there was no errors the file is considered to exist.
 	return false
 }
 
