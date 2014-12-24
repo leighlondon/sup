@@ -31,10 +31,14 @@ func getFilename() string {
 	return name
 }
 
+// Get the directory containing the storage file.
+// This checks for an environment variable (SUPERB_DIR) and falls back
+// to the HOME environment variable for the current user.
 func getFileDirectory() string {
 
 	var dir string
 
+	// Default to the home directory for the user.
 	home := os.Getenv("HOME")
 	env := os.Getenv(dirEnv)
 
