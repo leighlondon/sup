@@ -26,3 +26,24 @@ func TestFallsBackToDefaultFilename(t *testing.T) {
 		}
 	}
 }
+
+func TestUsesFilenameFromEnvironmentWhenSet(t *testing.T) {
+	// If the environment variable is set, it should use that setting.
+
+	// Get the storage in the env right now.
+	env := os.Getenv(fileEnv)
+
+	// Fill it with a temporary name if it's not set, but make sure
+	// to unset it when done.
+	if env == "" {
+		env = "TEST_SUPERB_FILENAME"
+		os.Setenv(fileEnv, env)
+		defer os.Unsetenv(fileEnv)
+	}
+
+	filename := getFilename()
+
+	if filename != env {
+		t.Error("doesn't use the env for filename")
+	}
+}
