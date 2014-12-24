@@ -50,3 +50,7 @@ func getFileDirectory() string {
 
 	return dir
 }
+
+func FilePath() string {
+	return getFileDirectory() + "/" + getFilename()
+}
