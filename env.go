@@ -27,3 +27,7 @@ func getFilename() string {
 
 	return name
 }
+
+func getFileDirectory() string {
+	return os.Getenv("HOME")
+}
