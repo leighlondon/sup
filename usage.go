@@ -8,6 +8,7 @@ Usage:
   sup [options]
 
 Options:
+  -f --file       Show the storage file path.
   -h --help       Show this screen.
   -v --version    Show the version.
 `

@@ -10,6 +10,9 @@ func main() {
 
 	arguments, _ := docopt.Parse(usage, nil, false, "", false)
 
+	// Get the filename from the environment.
+	filename := FilePath()
+
 	// The options flags are only one at a time each, and
 	// should exit immediately when completed.
 	if arguments["--help"] == true {
@@ -17,6 +20,9 @@ func main() {
 		os.Exit(0)
 	} else if arguments["--version"] == true {
 		printWarn(VersionString)
+		os.Exit(0)
+	} else if arguments["--file"] == true {
+		printOut(filename)
 		os.Exit(0)
 	}
 
