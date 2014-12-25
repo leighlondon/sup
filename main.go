@@ -27,7 +27,7 @@ func main() {
 	}
 
 	// Load in the data file.
-	data := Load("test.json")
+	data := Load(filename)
 
 	// Need to use a type assertion for a string on the "key" argument.
 	key, ok := arguments["<key>"].(string)
@@ -41,7 +41,7 @@ func main() {
 	// pair into the storage.
 	if value, ok := arguments["<value>"].(string); ok {
 		data[key] = value
-		Save("test.json", data)
+		Save(filename, data)
 	}
 
 	if v, ok := data[key]; ok {
