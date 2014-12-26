@@ -41,7 +41,6 @@ func getFileDirectory() string {
 	// Try the environment.
 	dir := os.Getenv(dirEnv)
 
-
 	if dir == "" {
 		// Default to the home directory for the user
 		// if the env variable wasn't set.
