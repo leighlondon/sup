@@ -2,6 +2,7 @@ package main
 
 import (
 	"os"
+	"os/user"
 	"path/filepath"
 )
 
@@ -37,16 +38,20 @@ func getFilename() string {
 // to the HOME environment variable for the current user.
 func getFileDirectory() string {
 
-	var dir string
+	// Try the environment.
+	dir := os.Getenv(dirEnv)
 
-	// Default to the home directory for the user.
-	home := os.Getenv("HOME")
-	env := os.Getenv(dirEnv)
 
-	if env != "" {
-		dir = env
-	} else {
-		dir = home
+	if dir == "" {
+		// Default to the home directory for the user
+		// if the env variable wasn't set.
+		usr, err := user.Current()
+		dir = usr.HomeDir
+
+		if err != nil {
+			printWarn("problem with home directory")
+			os.Exit(1)
+		}
 	}
 
 	return dir
