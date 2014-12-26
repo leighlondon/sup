@@ -54,5 +54,7 @@ func getFileDirectory() string {
 
 // Getting the file path from the environment.
 func FilePath() string {
+	// Join the filepath and the filename together with the
+	// OS-specific separator.
 	return filepath.Join(getFileDirectory(), getFilename())
 }
