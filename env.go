@@ -2,6 +2,7 @@ package main
 
 import (
 	"os"
+	"path/filepath"
 )
 
 // The default filename to fall back to.
@@ -51,6 +52,7 @@ func getFileDirectory() string {
 	return dir
 }
 
+// Getting the file path from the environment.
 func FilePath() string {
-	return getFileDirectory() + "/" + getFilename()
+	return filepath.Join(getFileDirectory(), getFilename())
 }
