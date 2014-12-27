@@ -45,12 +45,12 @@ func getFileDirectory() string {
 		// Default to the home directory for the user
 		// if the env variable wasn't set.
 		usr, err := user.Current()
-		dir = usr.HomeDir
-
 		if err != nil {
 			printWarn("problem with home directory")
 			os.Exit(1)
 		}
+
+		dir = usr.HomeDir
 	}
 
 	return dir
