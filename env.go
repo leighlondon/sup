@@ -20,13 +20,10 @@ const dirEnv = "SUPERB_DIR"
 // back to a default filename if this variable is not set.
 func getFilename() string {
 
-	var name string
+	name := os.Getenv(fileEnv)
 
-	env := os.Getenv(fileEnv)
-
-	if env != "" {
-		name = env
-	} else {
+	// Revert to the default name if the environment variable is empty.
+	if name == "" {
 		name = supFile
 	}
 
