@@ -48,6 +48,7 @@ func fileNotExists(filename string) bool {
 // Read a file by filename into memory as bytes.
 func readFile(filename string) []byte {
 
+	// If the file doesn't exist there's no data to read.
 	if fileNotExists(filename) == true {
 		return nil
 	}
@@ -82,6 +83,7 @@ func loadItems(bytes []byte) map[string]string {
 	// The data structure internally is a map from strings to strings.
 	data := make(map[string]string)
 
+	// Fail early if there's no data provided; just return the empty map.
 	if bytes == nil {
 		return data
 	}
