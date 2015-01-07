@@ -29,6 +29,15 @@ func main() {
 	// Load in the data file.
 	data := Load(filename)
 
+	// Now that the data has been loaded it can check for the
+	// data related options.
+	if arguments["--all"] == true {
+		for k, v := range data {
+			printWarn(k + " => " + v)
+		}
+		os.Exit(0)
+	}
+
 	// Need to use a type assertion for a string on the "key" argument.
 	key, ok := arguments["<key>"].(string)
 	if !ok {
