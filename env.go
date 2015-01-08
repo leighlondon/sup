@@ -43,7 +43,7 @@ func getFileDirectory() string {
 		// if the env variable wasn't set.
 		usr, err := user.Current()
 		if err != nil {
-			printWarn("problem with home directory")
+			printWarn("problem getting user home directory")
 			os.Exit(1)
 		}
 
@@ -55,6 +55,7 @@ func getFileDirectory() string {
 
 // Getting the file path from the environment.
 func FilePath() string {
+
 	// Join the filepath and the filename together with the
 	// OS-specific separator.
 	return filepath.Join(getFileDirectory(), getFilename())
