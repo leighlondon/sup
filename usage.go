@@ -1,3 +1,4 @@
+// The usage options for the program.
 package main
 
 const usage = `superb.
