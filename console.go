@@ -9,12 +9,15 @@ import (
 
 // Printing to standard output.
 func printOut(s string) {
-	fmt.Fprintf(os.Stdout, fixNewline(s))
+	output := fixNewline(s)
+	fmt.Fprintf(os.Stdout, output)
 }
 
 // Printing to standard error.
 func printWarn(s string) {
-	fmt.Fprintf(os.Stderr, fixNewline(s))
+	output := fixNewline(s)
+	output = wrapColour("blue", output)
+	fmt.Fprintf(os.Stdout, output)
 }
 
 // Normalise any leading and trailing whitespace.
