@@ -15,5 +15,9 @@ var colourMap = map[string]string{
 
 // Wrap a provided string with ANSI colour codes for terminal output.
 func wrapColour(colour, input string) string {
-	return colourMap[colour] + input + colourMap["reset"]
+	if _, ok := colourMap[colour]; ok {
+		return colourMap[colour] + input + colourMap["reset"]
+	}
+
+	return input
 }
