@@ -20,6 +20,7 @@ func printWarn(s string) {
 	fmt.Fprintf(os.Stdout, output)
 }
 
+// Printing and formatting a key-value combination.
 func printKeyValue(key, value string) {
 	keyString := wrapColour("blue", key)
 	valueString := wrapColour("red", value)
