@@ -33,7 +33,7 @@ func main() {
 	// data related options.
 	if arguments["--all"] == true {
 		for k, v := range data {
-			printWarn(k + " => " + v)
+			printKeyValue(k, v)
 		}
 		os.Exit(0)
 	}
@@ -54,7 +54,7 @@ func main() {
 	}
 
 	if v, ok := data[key]; ok {
-		printOut(v)
+		printKeyValue(key, v)
 	} else {
 		printWarn("not found")
 	}
