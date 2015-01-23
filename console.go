@@ -20,6 +20,12 @@ func printWarn(s string) {
 	fmt.Fprintf(os.Stdout, output)
 }
 
+func printKeyValue(key, value string) {
+	keyString := wrapColour("blue", key)
+	valueString := wrapColour("red", value)
+	printOut(keyString + " => " + valueString)
+}
+
 // Normalise any leading and trailing whitespace.
 func fixNewline(s string) string {
 	output := strings.TrimSpace(s)
