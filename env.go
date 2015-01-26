@@ -7,14 +7,16 @@ import (
 	"path/filepath"
 )
 
-// The default filename to fall back to.
-const supFile = ".superb"
+const (
+	// The default filename to fall back to.
+	supFile = ".superb"
 
-// The environment variable for the filename.
-const fileEnv = "SUPERB_FILE"
+	// The environment variable for the filename.
+	fileEnv = "SUPERB_FILE"
 
-// The environment variable for the directory.
-const dirEnv = "SUPERB_DIR"
+	// The environment variable for the directory.
+	dirEnv = "SUPERB_DIR"
+)
 
 // Get the filename to be used for the storage.
 // This will check for an environment variable (SUPERB_FILE) and falls
