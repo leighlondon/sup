@@ -30,7 +30,7 @@ func TestInvalidColoursReturnTheSameString(t *testing.T) {
 		t.Error("added an escape code incorrectly")
 	}
 
-	if !strings.EqualFold(coloured, testString) {
-		t.Error("invalid color should be the same string")
+	if coloured != testString {
+		t.Error("invalid color didn't return identical string")
 	}
 }
