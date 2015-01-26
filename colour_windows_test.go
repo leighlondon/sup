@@ -14,7 +14,7 @@ func TestValidColourOnWindowsDoesNothing(t *testing.T) {
 
 	// The strings should be literally identical.
 	if testString != unColoured {
-		t.Error("windows coloured string wasn't identical")
+		t.Error("valid windows coloured string wasn't identical")
 	}
 }
 
@@ -26,6 +26,6 @@ func TestInvalidColourOnWindowsDoesNothing(t *testing.T) {
 
 	// The strings should be literally identical.
 	if testString != unColoured {
-		t.Error("windows colour code wasn't base string")
+		t.Error("invalid windows coloured string wasn't identical")
 	}
 }
