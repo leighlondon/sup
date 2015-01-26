@@ -14,10 +14,6 @@ func TestColouredStingsHaveEscapeCodes(t *testing.T) {
 	if !strings.Contains(coloured, "\x1b") {
 		t.Error("didn't contain valid color code")
 	}
-
-	if !strings.Contains(coloured, "\x1b[;31m") {
-		t.Error("didn't contain the correct colour code")
-	}
 }
 
 func TestInvalidColoursReturnTheSameString(t *testing.T) {
