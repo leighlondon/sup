@@ -1,3 +1,5 @@
+// Testing the Unix-based colour printing features.
+
 package main
 
 import (
