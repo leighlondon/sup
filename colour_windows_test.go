@@ -1,7 +1,6 @@
-// Testing the Windows colour printing features.
-
 // +build windows
 
+// Testing the Windows colour printing features.
 package main
 
 import (

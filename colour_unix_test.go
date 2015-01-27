@@ -1,7 +1,6 @@
-// Testing the Unix-based colour printing features.
-
 // +build !windows
 
+// Testing the Unix-based colour printing features.
 package main
 
 import (
