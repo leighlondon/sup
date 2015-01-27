@@ -1,4 +1,7 @@
 // Console colouring.
+
+// +build !windows
+
 package main
 
 // Coloured escape codes.

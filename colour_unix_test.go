@@ -1,5 +1,7 @@
 // Testing the Unix-based colour printing features.
 
+// +build !windows
+
 package main
 
 import (
