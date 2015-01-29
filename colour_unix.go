@@ -24,3 +24,26 @@ func wrapColour(colour, input string) string {
 
 	return input
 }
+
+// Clowns. Lots of clowns.
+func clownify(input string) string {
+	var result string
+
+	// Loop the entire string and apply a colour based on the index.
+	for i, char := range input {
+		temp := string(char)
+
+		// Loop through the colours.
+		switch i % 4 {
+		case 0:
+			result += wrapColour("red", temp)
+		case 1:
+			result += wrapColour("yellow", temp)
+		case 2:
+			result += wrapColour("magenta", temp)
+		case 3:
+			result += wrapColour("blue", temp)
+		}
+	}
+	return result
+}
