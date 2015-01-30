@@ -12,7 +12,7 @@ func TestColouredStingsHaveEscapeCodes(t *testing.T) {
 	// Attempting to wrap with a valid colour should wrap the string
 	// in a valid ANSI escape code.
 	testString := "test"
-	coloured := wrapColour("red", testString)
+	coloured := wrapColourInternal("red", testString)
 
 	if !strings.Contains(coloured, "\x1b") {
 		t.Error("didn't contain valid color code")
@@ -23,7 +23,7 @@ func TestInvalidColoursReturnTheSameString(t *testing.T) {
 	// Attempting to wrap with an invalid colour should just return
 	// the original string.
 	testString := "test"
-	coloured := wrapColour("blurple", testString)
+	coloured := wrapColourInternal("blurple", testString)
 
 	if strings.Contains(coloured, "\x1b") {
 		t.Error("added an escape code incorrectly")
