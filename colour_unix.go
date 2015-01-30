@@ -18,6 +18,15 @@ var colourMap = map[string]string{
 
 // Wrap a provided string with ANSI colour codes for terminal output.
 func wrapColour(colour, input string) string {
+	if colourSettings == "colour" || colourSettings == "color" {
+		return wrapColourInternal(colour, input)
+	}
+
+	return input
+}
+
+func wrapColourInternal(colour, input string) string {
+	// Do it for real.
 	if _, ok := colourMap[colour]; ok {
 		return colourMap[colour] + input + colourMap["reset"]
 	}
