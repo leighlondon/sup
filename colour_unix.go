@@ -22,6 +22,8 @@ func wrapColour(colour, input string) string {
 	// Gate the colour coding by checking the environment.
 	if colourSettings == "colour" || colourSettings == "color" {
 		return wrapColourInternal(colour, input)
+	} else if colourSettings == "clown" {
+		return clownify(input)
 	}
 
 	// Fall back to return the original string unmodified.
