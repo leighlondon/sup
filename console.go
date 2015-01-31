@@ -16,7 +16,7 @@ func printOut(s string) {
 // Printing to standard error.
 func printWarn(s string) {
 	output := fixNewline(s)
-	output = wrapColour("", output)
+	output = wrapColour("red", output)
 	fmt.Fprintf(os.Stdout, output)
 }
 
