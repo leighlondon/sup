@@ -45,13 +45,13 @@ func clownify(input string) string {
 		// Loop through the colours.
 		switch i % 4 {
 		case 0:
-			result += wrapColour("red", temp)
+			result += wrapColourInternal("red", temp)
 		case 1:
-			result += wrapColour("yellow", temp)
+			result += wrapColourInternal("yellow", temp)
 		case 2:
-			result += wrapColour("magenta", temp)
+			result += wrapColourInternal("magenta", temp)
 		case 3:
-			result += wrapColour("blue", temp)
+			result += wrapColourInternal("blue", temp)
 		}
 	}
 	return result
