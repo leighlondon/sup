@@ -18,10 +18,13 @@ var colourMap = map[string]string{
 
 // Wrap a provided string with ANSI colour codes for terminal output.
 func wrapColour(colour, input string) string {
+
+	// Gate the colour coding by checking the environment.
 	if colourSettings == "colour" || colourSettings == "color" {
 		return wrapColourInternal(colour, input)
 	}
 
+	// Fall back to return the original string unmodified.
 	return input
 }
 
