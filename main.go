@@ -53,13 +53,14 @@ func main() {
 		os.Exit(0)
 	}
 
-	// If the "value" argument field is present just save the key:value
+	// If the "value" argument field is present just save the key-value
 	// pair into the storage.
 	if value, ok := arguments["<value>"].(string); ok {
 		data[key] = value
 		Save(filename, data)
 	}
 
+	// If a key-value pair is present, print it.
 	if v, ok := data[key]; ok {
 		printKeyValue(key, v)
 	} else {
