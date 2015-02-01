@@ -46,6 +46,12 @@ func main() {
 		os.Exit(0)
 	}
 
+	// Check now for the delete flag.
+	if arguments["--delete"] == true {
+		delete(data, key)
+		os.Exit(0)
+	}
+
 	// If the "value" argument field is present just save the key:value
 	// pair into the storage.
 	if value, ok := arguments["<value>"].(string); ok {
