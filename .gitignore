@@ -1,3 +1,5 @@
 # The project binary.
 sup
 sup.exe
+# Data files.
+*.json
