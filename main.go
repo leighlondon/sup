@@ -49,6 +49,7 @@ func main() {
 	// Check now for the delete flag.
 	if arguments["--delete"] == true {
 		delete(data, key)
+		Save(filename, data)
 		os.Exit(0)
 	}
 
