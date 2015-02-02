@@ -32,8 +32,8 @@ func main() {
 	// Now that the data has been loaded it can check for the
 	// data related options.
 	if arguments["--all"] == true {
-		for k, v := range data {
-			printKeyValue(k, v)
+		for key, value := range data {
+			printKeyValue(key, value)
 		}
 		os.Exit(0)
 	}
@@ -61,8 +61,8 @@ func main() {
 	}
 
 	// If a key-value pair is present, print it.
-	if v, ok := data[key]; ok {
-		printKeyValue(key, v)
+	if value, ok := data[key]; ok {
+		printKeyValue(key, value)
 	} else {
 		printWarn("not found")
 	}
