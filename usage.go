@@ -1,7 +1,7 @@
 // The usage options for the program.
 package main
 
-const usage = `superb.
+const usage = `superb ` + Version + `
 
 Usage:
   sup [options]
