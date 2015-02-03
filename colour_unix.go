@@ -21,8 +21,10 @@ func wrapColour(colour, input string) string {
 
 	// Gate the colour coding by checking the environment.
 	if colourSettings == "colour" || colourSettings == "color" {
+		// Wrap in the colour it provided.
 		return wrapColourInternal(colour, input)
 	} else if colourSettings == "clown" {
+		// Wrap in "clown" codes, and discard the requested colour.
 		return clownify(input)
 	}
 
@@ -31,11 +33,13 @@ func wrapColour(colour, input string) string {
 }
 
 func wrapColourInternal(colour, input string) string {
-	// Do it for real.
+
+	// Wrap in the real colour code if it's in the known colours.
 	if _, ok := colourMap[colour]; ok {
 		return colourMap[colour] + input + colourMap["reset"]
 	}
 
+	// Fall back to return the original string unmodified.
 	return input
 }
 
@@ -45,11 +49,13 @@ func clownify(input string) string {
 	var result, temp string
 
 	// Loop the entire string and apply a colour based on the index.
+	// The four colours have been selected for the best result as:
+	//   red, yellow, magenta, blue
 	for i, char := range input {
 
+		// Convert rune to string for the colouring function.
 		temp = string(char)
 
-		// Loop through the colours.
 		switch i % 4 {
 		case 0:
 			result += wrapColourInternal("red", temp)
@@ -61,5 +67,6 @@ func clownify(input string) string {
 			result += wrapColourInternal("blue", temp)
 		}
 	}
+
 	return result
 }
