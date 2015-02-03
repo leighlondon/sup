@@ -41,11 +41,13 @@ func wrapColourInternal(colour, input string) string {
 
 // Clowns. Lots of clowns.
 func clownify(input string) string {
-	var result string
+
+	var result, temp string
 
 	// Loop the entire string and apply a colour based on the index.
 	for i, char := range input {
-		temp := string(char)
+
+		temp = string(char)
 
 		// Loop through the colours.
 		switch i % 4 {
