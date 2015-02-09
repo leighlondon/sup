@@ -1,4 +1,3 @@
-// Retrieving settings from the environment.
 package main
 
 import (

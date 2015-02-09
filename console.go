@@ -1,4 +1,3 @@
-// Console output helpers.
 package main
 
 import (

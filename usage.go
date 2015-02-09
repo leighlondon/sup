@@ -1,6 +1,6 @@
-// The usage options for the program.
 package main
 
+// The usage options for the program.
 const usage = `superb ` + Version + `
 
 Usage:

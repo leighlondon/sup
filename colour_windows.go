@@ -1,6 +1,5 @@
 // +build windows
 
-// Console colouring.
 package main
 
 // Windows builds don't have colour printing enabled, so calling the
