@@ -1,8 +1,12 @@
 # Makefile for common operations.
+all: build fmt lint test
 build:
-	@go fmt
-	@go build
+	go build
+fmt:
+	go fmt
 clean:
-	@go clean
+	go clean
+lint:
+	golint
 test:
-	@go test
+	go test
