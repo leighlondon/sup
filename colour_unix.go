@@ -16,12 +16,12 @@ var colourMap = map[string]string{
 }
 
 // Wrap a provided string with ANSI colour codes for terminal output.
-func wrapColour(colour, input string) string {
+func WrapColour(colour, input string) string {
 
 	// Gate the colour coding by checking the environment.
 	if colourSettings == "colour" || colourSettings == "color" {
 		// Wrap in the colour it provided.
-		return wrapColourInternal(colour, input)
+		return wrapColour(colour, input)
 	} else if colourSettings == "clown" {
 		// Wrap in "clown" codes, and discard the requested colour.
 		return clownify(input)
@@ -31,7 +31,7 @@ func wrapColour(colour, input string) string {
 	return input
 }
 
-func wrapColourInternal(colour, input string) string {
+func wrapColour(colour, input string) string {
 
 	// Wrap in the real colour code if it's in the known colours.
 	if _, ok := colourMap[colour]; ok {
@@ -57,13 +57,13 @@ func clownify(input string) string {
 
 		switch i % 4 {
 		case 0:
-			result += wrapColourInternal("red", temp)
+			result += wrapColour("red", temp)
 		case 1:
-			result += wrapColourInternal("yellow", temp)
+			result += wrapColour("yellow", temp)
 		case 2:
-			result += wrapColourInternal("magenta", temp)
+			result += wrapColour("magenta", temp)
 		case 3:
-			result += wrapColourInternal("blue", temp)
+			result += wrapColour("blue", temp)
 		}
 	}
 

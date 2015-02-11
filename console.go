@@ -15,14 +15,14 @@ func printOut(s string) {
 // Printing to standard error.
 func printWarn(s string) {
 	output := fixNewline(s)
-	output = wrapColour("red", output)
+	output = WrapColour("red", output)
 	fmt.Fprintf(os.Stdout, output)
 }
 
 // Printing and formatting a key-value combination.
 func printKeyValue(key, value string) {
-	keyString := wrapColour("blue", key)
-	valueString := wrapColour("red", value)
+	keyString := WrapColour("blue", key)
+	valueString := WrapColour("red", value)
 	printOut(keyString + " => " + valueString)
 }
 
