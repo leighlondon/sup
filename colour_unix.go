@@ -15,7 +15,8 @@ var colourMap = map[string]string{
 	"reset":   "\x1b[0m",
 }
 
-// Wrap a provided string with ANSI colour codes for terminal output.
+// WrapColour wraps a provided string with ANSI colour codes, if colour
+// printing is possible on the platform.
 func WrapColour(colour, input string) string {
 
 	// Gate the colour coding by checking the environment.
