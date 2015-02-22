@@ -1,8 +1,6 @@
 package main
 
-import (
-	"testing"
-)
+import "testing"
 
 func TestNewlineNotAddedWhenPresent(t *testing.T) {
 	// Don't append a newline when normalising if there's

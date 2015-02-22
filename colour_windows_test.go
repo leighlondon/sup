@@ -2,9 +2,7 @@
 
 package main
 
-import (
-	"testing"
-)
+import "testing"
 
 func TestValidColourOnWindowsDoesNothing(t *testing.T) {
 	// Attempting to wrap a string with a valid colour on Windows
