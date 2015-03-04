@@ -46,7 +46,7 @@ func wrapColour(colour, input string) string {
 // Clowns. Lots of clowns.
 func clownify(input string) string {
 
-	var result, temp string
+	result := ""
 
 	// Loop the entire string and apply a colour based on the index.
 	// The four colours have been selected for the best result as:
@@ -54,7 +54,7 @@ func clownify(input string) string {
 	for i, char := range input {
 
 		// Convert rune to string for the colouring function.
-		temp = string(char)
+		temp := string(char)
 
 		switch i % 4 {
 		case 0:
