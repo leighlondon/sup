@@ -1,8 +1,6 @@
 package main
 
 import (
-	"os"
-
 	"github.com/docopt/docopt-go"
 )
 
@@ -17,13 +15,13 @@ func main() {
 	// should exit immediately when completed.
 	if arguments["--help"] == true {
 		printWarn(usage)
-		os.Exit(0)
+		return
 	} else if arguments["--version"] == true {
 		printWarn(VersionString)
-		os.Exit(0)
+		return
 	} else if arguments["--file"] == true {
 		printOut(filename)
-		os.Exit(0)
+		return
 	}
 
 	// Load in the data file.
@@ -35,7 +33,7 @@ func main() {
 		for key, value := range data {
 			printKeyValue(key, value)
 		}
-		os.Exit(0)
+		return
 	}
 
 	// Need to use a type assertion for a string on the "key" argument.
@@ -43,14 +41,14 @@ func main() {
 	if !ok {
 		// No key provided, just give the usage screen and exit.
 		printWarn(usage)
-		os.Exit(0)
+		return
 	}
 
 	// Check now for the delete flag.
 	if arguments["--delete"] == true {
 		delete(data, key)
 		Save(filename, data)
-		os.Exit(0)
+		return
 	}
 
 	// If the "value" argument field is present just save the key-value
