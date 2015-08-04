@@ -1,8 +1,29 @@
 package main
 
 import (
+	"flag"
 	"github.com/docopt/docopt-go"
 )
+
+var (
+	allFlag      bool
+	deleteFlag   bool
+	filenameFlag bool
+	helpFlag     bool
+	versionFlag  bool
+)
+
+func init() {
+	// Add the flags.
+	flag.BoolVar(&allFlag, "a", false, "Show all of the keys and values.")
+	flag.BoolVar(&deleteFlag, "d", false, "Delete the listed key.")
+	flag.BoolVar(&filenameFlag, "f", false, "Show the storage file path.")
+	flag.BoolVar(&helpFlag, "h", false, "Show this screen.")
+	flag.BoolVar(&versionFlag, "v", false, "Show the version.")
+
+	// Parse the flags.
+	flag.Parse()
+}
 
 func main() {
 
