@@ -34,13 +34,13 @@ func main() {
 
 	// The options flags are only one at a time each, and
 	// should exit immediately when completed.
-	if arguments["--help"] == true {
+	if helpFlag {
 		printWarn(usage)
 		return
-	} else if arguments["--version"] == true {
+	} else if versionFlag {
 		printWarn(VersionString)
 		return
-	} else if arguments["--file"] == true {
+	} else if filenameFlag {
 		printOut(filename)
 		return
 	}
@@ -50,7 +50,7 @@ func main() {
 
 	// Now that the data has been loaded it can check for the
 	// data related options.
-	if arguments["--all"] == true {
+	if allFlag {
 		for key, value := range data {
 			printKeyValue(key, value)
 		}
@@ -66,7 +66,7 @@ func main() {
 	}
 
 	// Check now for the delete flag.
-	if arguments["--delete"] == true {
+	if deleteFlag {
 		delete(data, key)
 		Save(filename, data)
 		return
