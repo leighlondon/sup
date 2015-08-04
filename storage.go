@@ -11,10 +11,10 @@ import (
 // support a simple key-value model.
 //
 // It only really needs to support the two "public" functions:
-//   Load(filename) data
-//   Save(filename, data)
+//   LoadData(filename) data
+//   SaveData(filename, data)
 
-// Load the data stored in a file.
+// LoadData loads the data stored in a file.
 func LoadData(filename string) map[string]string {
 	// Load the data in as bytes, and then into a data structure.
 	bytes := readFile(filename)
@@ -22,7 +22,7 @@ func LoadData(filename string) map[string]string {
 	return data
 }
 
-// Save the data to a file.
+// SaveData saves the data to a file.
 func SaveData(filename string, data map[string]string) {
 	// Marshal the data structure into bytes, and then save to a file.
 	bytes := makeBytes(data)
