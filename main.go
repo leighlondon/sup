@@ -38,7 +38,7 @@ func main() {
 	}
 
 	// Load in the data file.
-	data := Load(filename)
+	data := LoadData(filename)
 
 	// Now that the data has been loaded it can check for the
 	// data related options.
@@ -61,7 +61,7 @@ func main() {
 	// Check now for the delete flag.
 	if deleteFlag {
 		delete(data, key)
-		Save(filename, data)
+		SaveData(filename, data)
 		return
 	}
 
@@ -70,7 +70,7 @@ func main() {
 	if flag.NArg() == 2 {
 		value := flag.Arg(1)
 		data[key] = value
-		Save(filename, data)
+		SaveData(filename, data)
 	}
 
 	// If a key-value pair is present, print it.
