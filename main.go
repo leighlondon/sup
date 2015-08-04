@@ -2,7 +2,6 @@ package main
 
 import (
 	"flag"
-	"github.com/docopt/docopt-go"
 )
 
 var (
@@ -26,8 +25,6 @@ func init() {
 }
 
 func main() {
-
-	arguments, _ := docopt.Parse(usage, nil, false, "", false)
 
 	// Get the filename from the environment.
 	filename := FilePath()
