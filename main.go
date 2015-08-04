@@ -51,7 +51,7 @@ func main() {
 
 	// No key provided, just give the usage screen and exit.
 	if flag.NArg() == 0 {
-		printWarn(usage)
+		flag.Usage()
 		return
 	}
 
