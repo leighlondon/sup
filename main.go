@@ -8,7 +8,6 @@ var (
 	allFlag      bool
 	deleteFlag   bool
 	filenameFlag bool
-	helpFlag     bool
 	versionFlag  bool
 )
 
@@ -17,7 +16,6 @@ func init() {
 	flag.BoolVar(&allFlag, "a", false, "Show all of the keys and values.")
 	flag.BoolVar(&deleteFlag, "d", false, "Delete the listed key.")
 	flag.BoolVar(&filenameFlag, "f", false, "Show the storage file path.")
-	flag.BoolVar(&helpFlag, "h", false, "Show this screen.")
 	flag.BoolVar(&versionFlag, "v", false, "Show the version.")
 
 	// Parse the flags.
@@ -31,10 +29,7 @@ func main() {
 
 	// The options flags are only one at a time each, and
 	// should exit immediately when completed.
-	if helpFlag {
-		printWarn(usage)
-		return
-	} else if versionFlag {
+	if versionFlag {
 		printWarn(VersionString)
 		return
 	} else if filenameFlag {
