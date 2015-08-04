@@ -32,8 +32,8 @@ func TestSaveToLoadProducesSameData(t *testing.T) {
 
 	filename := "sup_test_filename"
 
-	Save(filename, data)
-	loaded := Load(filename)
+	SaveData(filename, data)
+	loaded := LoadData(filename)
 
 	if reflect.DeepEqual(data, loaded) == false {
 		t.Error("saved data different from loaded")
