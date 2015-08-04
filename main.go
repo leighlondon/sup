@@ -57,13 +57,14 @@ func main() {
 		return
 	}
 
-	// Need to use a type assertion for a string on the "key" argument.
-	key, ok := arguments["<key>"].(string)
-	if !ok {
-		// No key provided, just give the usage screen and exit.
+	// No key provided, just give the usage screen and exit.
+	if flag.NArg() == 0 {
 		printWarn(usage)
 		return
 	}
+
+	// The key is the first argument after the flags.
+	key := flag.Arg(0)
 
 	// Check now for the delete flag.
 	if deleteFlag {
@@ -74,7 +75,8 @@ func main() {
 
 	// If the "value" argument field is present just save the key-value
 	// pair into the storage.
-	if value, ok := arguments["<value>"].(string); ok {
+	if flag.NArg() == 2 {
+		value := flag.Arg(1)
 		data[key] = value
 		Save(filename, data)
 	}
