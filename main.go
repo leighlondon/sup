@@ -4,25 +4,16 @@ import (
 	"flag"
 )
 
-var (
-	allFlag      bool
-	deleteFlag   bool
-	filenameFlag bool
-	versionFlag  bool
-)
+func main() {
 
-func init() {
 	// Add the flags.
-	flag.BoolVar(&allFlag, "a", false, "Show all of the keys and values.")
-	flag.BoolVar(&deleteFlag, "d", false, "Delete the listed key.")
-	flag.BoolVar(&filenameFlag, "f", false, "Show the storage file path.")
-	flag.BoolVar(&versionFlag, "v", false, "Show the version.")
+	var allFlag = flag.Bool("a", false, "Show all of the keys and values.")
+	var deleteFlag = flag.Bool("d", false, "Delete the listed key.")
+	var filenameFlag = flag.Bool("f", false, "Show the storage file path.")
+	var versionFlag = flag.Bool("v", false, "Show the version.")
 
 	// Parse the flags.
 	flag.Parse()
-}
-
-func main() {
 
 	// Get the filename from the environment.
 	filename := FilePath()
