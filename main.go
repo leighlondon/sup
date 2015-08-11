@@ -20,10 +20,10 @@ func main() {
 
 	// The options flags are only one at a time each, and
 	// should exit immediately when completed.
-	if versionFlag {
+	if *versionFlag {
 		printWarn(VersionString)
 		return
-	} else if filenameFlag {
+	} else if *filenameFlag {
 		printOut(filename)
 		return
 	}
@@ -33,7 +33,7 @@ func main() {
 
 	// Now that the data has been loaded it can check for the
 	// data related options.
-	if allFlag {
+	if *allFlag {
 		for key, value := range data {
 			printKeyValue(key, value)
 		}
@@ -50,7 +50,7 @@ func main() {
 	key := flag.Arg(0)
 
 	// Check now for the delete flag.
-	if deleteFlag {
+	if *deleteFlag {
 		delete(data, key)
 		SaveData(filename, data)
 		return
