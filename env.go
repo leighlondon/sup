@@ -61,7 +61,7 @@ func getFileDirectory() string {
 }
 
 // FilePath returns the filepath from the environment.
-func FilePath() string {
+func FilePathFromEnv() string {
 
 	// Join the filepath and the filename together with the
 	// OS-specific separator.

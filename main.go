@@ -16,7 +16,7 @@ func main() {
 	flag.Parse()
 
 	// Get the filename from the environment.
-	filename := FilePath()
+	filename := FilePathFromEnv()
 
 	// The options flags are only one at a time each, and
 	// should exit immediately when completed.
