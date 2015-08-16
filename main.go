@@ -4,6 +4,20 @@ import (
 	"flag"
 )
 
+const usageString = `superb ` + Version + `
+
+Usage:
+  sup [options]
+  sup [options] <key> [<value>]
+
+Options:
+  -a --all        Show all of the keys and values.
+  -d --delete     Delete the listed key.
+  -f --file       Show the storage file path.
+  -h --help       Show this screen.
+  -v --version    Show the version.
+`
+
 func main() {
 
 	// Add the flags.
@@ -11,6 +25,11 @@ func main() {
 	var deleteFlag = flag.Bool("d", false, "Delete the listed key.")
 	var filenameFlag = flag.Bool("f", false, "Show the storage file path.")
 	var versionFlag = flag.Bool("v", false, "Show the version.")
+
+	flag.Usage = func() {
+		printOut(usageString)
+		return
+	}
 
 	// Parse the flags.
 	flag.Parse()
