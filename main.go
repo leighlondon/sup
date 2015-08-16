@@ -26,6 +26,7 @@ func main() {
 	var filenameFlag = flag.Bool("f", false, "Show the storage file path.")
 	var versionFlag = flag.Bool("v", false, "Show the version.")
 
+	// Set a prettier "usage" screen, for "-h" and "--help" flags.
 	flag.Usage = func() {
 		printOut(usageString)
 		return
