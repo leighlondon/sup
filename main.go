@@ -40,7 +40,7 @@ func main() {
 	// The options flags are only one at a time each, and
 	// should exit immediately when completed.
 	if *versionFlag {
-		printWarn(VersionString)
+		printOut(VersionString)
 		return
 	} else if *filenameFlag {
 		printOut(filename)
