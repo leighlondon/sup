@@ -60,7 +60,7 @@ func getFileDirectory() string {
 	return dir
 }
 
-// FilePath returns the filepath from the environment.
+// FilePathFromEnv returns the filepath from the environment.
 func FilePathFromEnv() string {
 
 	// Join the filepath and the filename together with the
