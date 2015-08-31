@@ -7,15 +7,15 @@ import (
 const usageString = `superb ` + Version + `
 
 Usage:
-  sup [options]
-  sup [options] <key> [<value>]
+    sup [options]
+    sup [options] <key> [<value>]
 
 Options:
-  -a --all        Show all of the keys and values.
-  -d --delete     Delete the listed key.
-  -f --file       Show the storage file path.
-  -h --help       Show this screen.
-  -v --version    Show the version.
+    -a --all        Show all of the keys and values.
+    -d --delete     Delete the listed key.
+    -f --file       Show the storage file path.
+    -h --help       Show this screen.
+    -v --version    Show the version.
 `
 
 func main() {
