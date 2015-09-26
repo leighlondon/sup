@@ -15,12 +15,7 @@ const (
 
 	// The environment variable for the directory.
 	dirEnv = "SUPERB_DIR"
-
-	// The environment variable for colour settings.
-	colourEnv = "SUPERB_COLOUR"
 )
-
-var colourSettings = os.Getenv(colourEnv)
 
 // Get the filename to be used for the storage.
 // This will check for an environment variable (SUPERB_FILE) and falls
