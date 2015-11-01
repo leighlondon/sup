@@ -19,25 +19,20 @@ Options:
 `
 
 func main() {
-
 	// Add the flags.
 	var allFlag = flag.Bool("a", false, "Show all of the keys and values.")
 	var deleteFlag = flag.Bool("d", false, "Delete the listed key.")
 	var filenameFlag = flag.Bool("f", false, "Show the storage file path.")
 	var versionFlag = flag.Bool("v", false, "Show the version.")
-
 	// Set a prettier "usage" screen, for "-h" and "--help" flags.
 	flag.Usage = func() {
 		printOut(usageString)
 		return
 	}
-
 	// Parse the flags.
 	flag.Parse()
-
 	// Get the filename from the environment.
 	filename := FilePathFromEnv()
-
 	// The options flags are only one at a time each, and
 	// should exit immediately when completed.
 	if *versionFlag {
@@ -47,10 +42,8 @@ func main() {
 		printOut(filename)
 		return
 	}
-
 	// Load in the data file.
 	data := LoadData(filename)
-
 	// Now that the data has been loaded it can check for the
 	// data related options.
 	if *allFlag {
@@ -59,23 +52,19 @@ func main() {
 		}
 		return
 	}
-
 	// No key provided, just give the usage screen and exit.
 	if flag.NArg() == 0 {
 		flag.Usage()
 		return
 	}
-
 	// The key is the first argument after the flags.
 	key := flag.Arg(0)
-
 	// Check now for the delete flag.
 	if *deleteFlag {
 		delete(data, key)
 		SaveData(filename, data)
 		return
 	}
-
 	// If the "value" argument field is present just save the key-value
 	// pair into the storage.
 	if flag.NArg() == 2 {
@@ -83,7 +72,6 @@ func main() {
 		data[key] = value
 		SaveData(filename, data)
 	}
-
 	// If a key-value pair is present, print it.
 	if value, ok := data[key]; ok {
 		printKeyValue(key, value)
