@@ -20,10 +20,10 @@ Options:
 
 func main() {
 	// Add the flags.
-	var allFlag = flag.Bool("a", false, "Show all of the keys and values.")
-	var deleteFlag = flag.Bool("d", false, "Delete the listed key.")
-	var filenameFlag = flag.Bool("f", false, "Show the storage file path.")
-	var versionFlag = flag.Bool("v", false, "Show the version.")
+	allFlag := flag.Bool("a", false, "Show all of the keys and values.")
+	deleteFlag := flag.Bool("d", false, "Delete the listed key.")
+	filenameFlag := flag.Bool("f", false, "Show the storage file path.")
+	versionFlag := flag.Bool("v", false, "Show the version.")
 	// Set a prettier "usage" screen, for "-h" and "--help" flags.
 	flag.Usage = func() {
 		printOut(usageString)
