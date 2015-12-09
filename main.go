@@ -18,6 +18,14 @@ Options:
     -v     Show the version.
 `
 
+// Storage is the usage contract that the backend agrees to, and is a
+// generic interface and can swap in backends so long as they support
+// a simple key-value model.
+type Storage interface {
+	LoadData(string) map[string]string
+	SaveData(string, map[string]string)
+}
+
 func main() {
 	// Add the flags.
 	allFlag := flag.Bool("a", false, "Show all of the keys and values.")

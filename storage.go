@@ -6,14 +6,6 @@ import (
 	"os"
 )
 
-// The 'storage' is just a JSON file, but the interface should be (and is)
-// more generic, and can be swapped out for other backends so long as they
-// support a simple key-value model.
-//
-// It only really needs to support the two "public" functions:
-//   LoadData(filename) data
-//   SaveData(filename, data)
-
 // LoadData loads the data stored in a file.
 func LoadData(filename string) map[string]string {
 	// Load the data in as bytes, and then into a data structure.
