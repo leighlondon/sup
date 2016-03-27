@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"os"
 	"os/user"
 	"path/filepath"
@@ -38,7 +39,7 @@ func getFileDirectory() string {
 		// if the env variable wasn't set.
 		usr, err := user.Current()
 		if err != nil {
-			printWarn("problem getting user home directory")
+			fmt.Fprintf(os.Stderr, "problem getting user home directory")
 			os.Exit(1)
 		}
 		dir = usr.HomeDir

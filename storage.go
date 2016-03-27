@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"fmt"
 	"io/ioutil"
 	"os"
 )
@@ -44,7 +45,7 @@ func readFile(filename string) []byte {
 	// Read in the file as bytes using ioutil.
 	bytes, err := ioutil.ReadFile(filename)
 	if err != nil {
-		printWarn("unable to read file")
+		fmt.Fprintf(os.Stderr, "unable to read file")
 		os.Exit(1)
 	}
 	return bytes
@@ -56,7 +57,7 @@ func saveFile(filename string, data []byte) {
 	// The default permissions to be used will be 0644.
 	err := ioutil.WriteFile(filename, data, 0644)
 	if err != nil {
-		printWarn("problem saving file")
+		fmt.Fprintf(os.Stderr, "problem saving file")
 		os.Exit(1)
 	}
 }
@@ -72,7 +73,7 @@ func loadItems(bytes []byte) map[string]string {
 	// Unmarshal the data from JSON-as-bytes into the map.
 	err := json.Unmarshal(bytes, &data)
 	if err != nil {
-		printWarn("unable to load data")
+		fmt.Fprintf(os.Stderr, "unable to load data")
 		os.Exit(1)
 	}
 	return data
@@ -83,7 +84,7 @@ func makeBytes(data map[string]string) []byte {
 	// Marshal the map into JSON, as bytes.
 	bytes, err := json.Marshal(data)
 	if err != nil {
-		printWarn("unable to marshal data")
+		fmt.Fprintf(os.Stderr, "unable to marshal data")
 		os.Exit(1)
 	}
 	return bytes

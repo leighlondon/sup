@@ -2,6 +2,7 @@ package main
 
 import (
 	"flag"
+	"fmt"
 )
 
 const usageString = `superb ` + Version + `
@@ -34,7 +35,7 @@ func main() {
 	versionFlag := flag.Bool("v", false, "Show the version.")
 	// Set a prettier "usage" screen, for "-h" and "--help" flags.
 	flag.Usage = func() {
-		printOut(usageString)
+		fmt.Printf("%s", usageString)
 		return
 	}
 	// Parse the flags.
@@ -44,10 +45,10 @@ func main() {
 	// The options flags are only one at a time each, and
 	// should exit immediately when completed.
 	if *versionFlag {
-		printOut(VersionString)
+		fmt.Println(VersionString)
 		return
 	} else if *filenameFlag {
-		printOut(filename)
+		fmt.Println(filename)
 		return
 	}
 	// Load in the data file.
@@ -56,7 +57,7 @@ func main() {
 	// data related options.
 	if *allFlag {
 		for key, value := range data {
-			printKeyValue(key, value)
+			fmt.Printf("%s => %s\n", key, value)
 		}
 		return
 	}
@@ -82,8 +83,8 @@ func main() {
 	}
 	// If a key-value pair is present, print it.
 	if value, ok := data[key]; ok {
-		printKeyValue(key, value)
+		fmt.Printf("%s\n", value)
 	} else {
-		printWarn("not found")
+		fmt.Println("not found")
 	}
 }
