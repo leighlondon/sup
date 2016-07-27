@@ -13,18 +13,20 @@ type JSONStorage struct {
 }
 
 // Load loads the data stored in a file.
-func (s *JSONStorage) Load() {
+func (s *JSONStorage) Load() error {
 	// Load the data in as bytes, and then into a data structure.
 	bytes := readFile(s.filename)
 	data := loadItems(bytes)
 	s.data = data
+	return nil
 }
 
 // Save saves the data to a file.
-func (s *JSONStorage) Save() {
+func (s *JSONStorage) Save() error {
 	// Marshal the data structure into bytes, and then save to a file.
 	bytes := makeBytes(s.data)
 	saveFile(s.filename, bytes)
+	return nil
 }
 
 // Check if a file does not exist.
