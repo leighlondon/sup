@@ -7,19 +7,24 @@ import (
 	"os"
 )
 
-// LoadData loads the data stored in a file.
-func LoadData(filename string) map[string]string {
-	// Load the data in as bytes, and then into a data structure.
-	bytes := readFile(filename)
-	data := loadItems(bytes)
-	return data
+type JSONStorage struct {
+	data     map[string]string
+	filename string
 }
 
-// SaveData saves the data to a file.
-func SaveData(filename string, data map[string]string) {
+// Load loads the data stored in a file.
+func (s *JSONStorage) Load() {
+	// Load the data in as bytes, and then into a data structure.
+	bytes := readFile(s.filename)
+	data := loadItems(bytes)
+	s.data = data
+}
+
+// Save saves the data to a file.
+func (s *JSONStorage) Save() {
 	// Marshal the data structure into bytes, and then save to a file.
-	bytes := makeBytes(data)
-	saveFile(filename, bytes)
+	bytes := makeBytes(s.data)
+	saveFile(s.filename, bytes)
 }
 
 // Check if a file does not exist.
