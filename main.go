@@ -23,8 +23,8 @@ Options:
 // generic interface and can swap in backends so long as they support
 // a simple key-value model.
 type Storage interface {
-	LoadData(string) map[string]string
-	SaveData(string, map[string]string)
+	Load() error
+	Save() error
 }
 
 func main() {
