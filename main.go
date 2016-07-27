@@ -51,12 +51,13 @@ func main() {
 		fmt.Println(filename)
 		return
 	}
+	s := JSONStorage{filename: filename}
 	// Load in the data file.
-	data := LoadData(filename)
+	s.Load()
 	// Now that the data has been loaded it can check for the
 	// data related options.
 	if *allFlag {
-		for key, value := range data {
+		for key, value := range s.data {
 			fmt.Printf("%s => %s\n", key, value)
 		}
 		return
@@ -70,19 +71,19 @@ func main() {
 	key := flag.Arg(0)
 	// Check now for the delete flag.
 	if *deleteFlag {
-		delete(data, key)
-		SaveData(filename, data)
+		delete(s.data, key)
+		s.Save()
 		return
 	}
 	// If the "value" argument field is present just save the key-value
 	// pair into the storage.
 	if flag.NArg() == 2 {
 		value := flag.Arg(1)
-		data[key] = value
-		SaveData(filename, data)
+		s.data[key] = value
+		s.Save()
 	}
 	// If a key-value pair is present, print it.
-	if value, ok := data[key]; ok {
+	if value, ok := s.data[key]; ok {
 		fmt.Printf("%s\n", value)
 	} else {
 		fmt.Println("not found")
