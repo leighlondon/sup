@@ -5,7 +5,7 @@ import (
 	"fmt"
 )
 
-const usageString = `superb ` + Version + `
+const usage = `superb ` + Version + `
 
 Usage:
     sup [options]
@@ -35,7 +35,7 @@ func main() {
 	versionFlag := flag.Bool("v", false, "Show the version.")
 	// Set a prettier "usage" screen, for "-h" and "--help" flags.
 	flag.Usage = func() {
-		fmt.Printf("%s", usageString)
+		fmt.Printf("%s", usage)
 		return
 	}
 	// Parse the flags.
