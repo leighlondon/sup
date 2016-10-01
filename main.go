@@ -45,7 +45,7 @@ func main() {
 	// The options flags are only one at a time each, and
 	// should exit immediately when completed.
 	if *versionFlag {
-		fmt.Println(VersionString)
+		fmt.Println("sup version " + Version)
 		return
 	} else if *filenameFlag {
 		fmt.Println(filename)
