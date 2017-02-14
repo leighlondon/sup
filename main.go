@@ -34,10 +34,7 @@ func main() {
 	filenameFlag := flag.Bool("f", false, "Show the storage file path.")
 	versionFlag := flag.Bool("v", false, "Show the version.")
 	// Set a prettier "usage" screen, for "-h" and "--help" flags.
-	flag.Usage = func() {
-		fmt.Printf("%s", usage)
-		return
-	}
+	flag.Usage = func() { fmt.Printf("%s", usage) }
 	// Parse the flags.
 	flag.Parse()
 	// Get the filename from the environment.
