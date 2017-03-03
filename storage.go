@@ -28,7 +28,10 @@ func (s *JSONStorage) Save() error {
 	if err != nil {
 		return err
 	}
-	saveFile(s.filename, bytes)
+	err = saveFile(s.filename, bytes)
+	if err != nil {
+		return err
+	}
 	return nil
 }
 
@@ -62,14 +65,10 @@ func readFile(filename string) []byte {
 }
 
 // Save some bytes to a file.
-func saveFile(filename string, data []byte) {
+func saveFile(filename string, data []byte) error {
 	// Need to provide the permissions even if file already exists.
 	// The default permissions to be used will be 0644.
-	err := ioutil.WriteFile(filename, data, 0644)
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "problem saving file")
-		os.Exit(1)
-	}
+	return ioutil.WriteFile(filename, data, 0644)
 }
 
 // Load bytes into a data structure.
