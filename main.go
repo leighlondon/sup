@@ -50,7 +50,10 @@ func main() {
 	}
 	s := JSONStorage{filename: filename}
 	// Load in the data file.
-	s.Load()
+	if err := s.Load(); err != nil {
+		fmt.Printf("error: %s", err.Error())
+		return
+	}
 	// Now that the data has been loaded it can check for the
 	// data related options.
 	if *allFlag {
