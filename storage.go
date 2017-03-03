@@ -24,7 +24,10 @@ func (s *JSONStorage) Load() error {
 // Save saves the data to a file.
 func (s *JSONStorage) Save() error {
 	// Marshal the data structure into bytes, and then save to a file.
-	bytes := makeBytes(s.data)
+	bytes, err := makeBytes(s.data)
+	if err != nil {
+		return err
+	}
 	saveFile(s.filename, bytes)
 	return nil
 }
@@ -87,12 +90,7 @@ func loadItems(bytes []byte) map[string]string {
 }
 
 // Convert a data structure into byte format.
-func makeBytes(data map[string]string) []byte {
+func makeBytes(data map[string]string) ([]byte, error) {
 	// Marshal the map into JSON, as bytes.
-	bytes, err := json.Marshal(data)
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "unable to marshal data")
-		os.Exit(1)
-	}
-	return bytes
+	return json.Marshal(data)
 }
