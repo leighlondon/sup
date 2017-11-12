@@ -15,7 +15,10 @@ type JSONStorage struct {
 // Load loads the data stored in a file.
 func (s *JSONStorage) Load() error {
 	// Load the data in as bytes, and then into a data structure.
-	bytes := readFile(s.filename)
+	bytes, err := readFile(s.filename)
+	if err != nil {
+		return err
+	}
 	data := loadItems(bytes)
 	s.data = data
 	return nil
@@ -35,33 +38,10 @@ func (s *JSONStorage) Save() error {
 	return nil
 }
 
-// Check if a file does not exist.
-func fileNotExists(filename string) bool {
-	// Just stat the filename and get the error.
-	_, err := os.Stat(filename)
-	if err != nil {
-		// Check if the error says that it doesn't exist.
-		if os.IsNotExist(err) {
-			return true
-		}
-	}
-	// If there was no errors the file is considered to exist.
-	return false
-}
-
 // Read a file by filename into memory as bytes.
-func readFile(filename string) []byte {
-	// If the file doesn't exist there's no data to read.
-	if fileNotExists(filename) == true {
-		return nil
-	}
+func readFile(filename string) ([]byte, error) {
 	// Read in the file as bytes using ioutil.
-	bytes, err := ioutil.ReadFile(filename)
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "unable to read file")
-		os.Exit(1)
-	}
-	return bytes
+	return ioutil.ReadFile(filename)
 }
 
 // Save some bytes to a file.
