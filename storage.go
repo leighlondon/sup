@@ -19,8 +19,7 @@ func (s *JSONStorage) Load() error {
 	if err != nil {
 		return err
 	}
-	data := loadItems(bytes)
-	s.data = data
+	s.data = loadItems(bytes)
 	return nil
 }
 
