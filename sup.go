@@ -4,6 +4,7 @@ package sup
 // generic interface and can swap in backends so long as they support
 // a simple key-value model.
 type Storer interface {
+	All() map[string]string
 	Put(string, string)
 	Get(string) (string, error)
 	Load() error

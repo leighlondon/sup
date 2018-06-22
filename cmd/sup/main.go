@@ -38,6 +38,16 @@ func run(store sup.Storer, args ...string) {
 		fmt.Println(store.Filename())
 		return
 	}
+	if all {
+		for k, v := range store.All() {
+			fmt.Printf("%s: %s", k, v)
+		}
+		return
+	}
+	if len(args) < 1 {
+		fmt.Println("invalid")
+		return
+	}
 }
 
 func main() {

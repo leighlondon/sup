@@ -24,6 +24,9 @@ func (m *MemoryStorage) Save() error { return nil }
 // Filename returns /dev/null as it is in-memory storage.
 func (m *MemoryStorage) Filename() string { return "/dev/null # in-memory-storage" }
 
+// All returns all key-value pairs.
+func (m *MemoryStorage) All() map[string]string { return m.data }
+
 // Put adds a key-value pair.
 func (m *MemoryStorage) Put(key, value string) {
 	m.data[key] = value
