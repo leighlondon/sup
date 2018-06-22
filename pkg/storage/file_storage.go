@@ -1,5 +1,10 @@
 package storage
 
+import (
+	"encoding/json"
+	"io/ioutil"
+)
+
 // FileBackedStorage implements the sup.Storer interface.
 type FileBackedStorage struct {
 	data     map[string]string
@@ -8,7 +13,7 @@ type FileBackedStorage struct {
 
 // New initializes a new instance of FileBackedStorage.
 func New(filename string) (*FileBackedStorage, error) {
-	data, err := loadJson(filename)
+	data, err := loadFile(filename)
 	return &FileBackedStorage{data: data, filename: filename}, err
 }
 
@@ -19,7 +24,7 @@ func (s *FileBackedStorage) Filename() string {
 
 // Load updates the state from the backing store.
 func (s *FileBackedStorage) Load() error {
-	data, err := loadJson(s.filename)
+	data, err := loadFile(s.filename)
 	if err != nil {
 		return err
 	}
@@ -29,13 +34,23 @@ func (s *FileBackedStorage) Load() error {
 
 // Save the state to the backing store.
 func (s *FileBackedStorage) Save() error {
-	return saveJson(s.filename, s.data)
+	return saveFile(s.filename, s.data)
 }
 
-func loadJson(filename string) (map[string]string, error) {
-	return make(map[string]string), nil
+func loadFile(filename string) (map[string]string, error) {
+	b, err := ioutil.ReadFile(filename)
+	if err != nil {
+		return nil, err
+	}
+	data := make(map[string]string)
+	err = json.Unmarshal(b, &data)
+	return data, err
 }
 
-func saveJson(filename string, data map[string]string) error {
-	return nil
+func saveFile(filename string, data map[string]string) error {
+	b, err := json.Marshal(data)
+	if err != nil {
+		return err
+	}
+	return ioutil.WriteFile(filename, b, 0644)
 }
