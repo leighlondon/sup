@@ -10,8 +10,8 @@ type MemoryStorage struct {
 	data map[string]string
 }
 
-// NewInMemoryStorage initializes the storage.
-func NewInMemoryStorage() *MemoryStorage {
+// NewInMemoryStorage initializes the storage. The filename is discarded.
+func NewInMemoryStorage(filename string) *MemoryStorage {
 	return &MemoryStorage{data: make(map[string]string)}
 }
 

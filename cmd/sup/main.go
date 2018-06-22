@@ -3,8 +3,10 @@ package main
 import (
 	"flag"
 	"fmt"
+	"os"
 
 	"github.com/leighlondon/sup"
+	"github.com/leighlondon/sup/pkg/config"
 	"github.com/leighlondon/sup/pkg/storage"
 )
 
@@ -59,7 +61,13 @@ func main() {
 	// Parse the opts.
 	flag.Parse()
 
-	store := storage.NewInMemoryStorage()
+	path, err := config.Filepath()
+	if err != nil {
+		fmt.Println(err)
+		os.Exit(1)
+	}
+
+	store := storage.NewInMemoryStorage(path)
 	args := flag.Args()
 
 	run(store, opts, args...)
