@@ -43,3 +43,11 @@ func TestMemoryFilename(t *testing.T) {
 		t.Error("should be non-empty string")
 	}
 }
+
+func TestMemoryAll(t *testing.T) {
+	m := NewInMemoryStorage()
+	m.Put("hello", "world")
+	if len(m.All()) != 1 {
+		t.Error("all should return data")
+	}
+}
