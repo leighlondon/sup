@@ -21,6 +21,9 @@ func (m *MemoryStorage) Load() error { return nil }
 // Save is a no-op.
 func (m *MemoryStorage) Save() error { return nil }
 
+// Filename returns /dev/null as it is in-memory storage.
+func (m *MemoryStorage) Filename() string { return "/dev/null # in-memory-storage" }
+
 // Put adds a key-value pair.
 func (m *MemoryStorage) Put(key, value string) {
 	m.data[key] = value

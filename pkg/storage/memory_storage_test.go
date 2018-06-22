@@ -36,3 +36,10 @@ func TestMemorySave(t *testing.T) {
 		t.Error("save should not return error")
 	}
 }
+
+func TestMemoryFilename(t *testing.T) {
+	m := NewInMemoryStorage()
+	if m.Filename() == "" {
+		t.Error("should be non-empty string")
+	}
+}
