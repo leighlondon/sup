@@ -2,7 +2,7 @@ package main
 
 import (
 	"flag"
-	"fmt"
+	"log"
 	"os"
 
 	"github.com/leighlondon/sup"
@@ -24,28 +24,30 @@ Options:
     -v     Show the version.
 `
 
-func run(store sup.Storer, opts sup.Options, args ...string) {
+func run(store sup.Storer, opts sup.Options, log *log.Logger, args ...string) {
 	if opts.Version {
-		fmt.Println(sup.Version)
+		log.Println(sup.Version)
 		return
 	}
 	if opts.Filename {
-		fmt.Println(store.Filename())
+		log.Println(store.Filename())
 		return
 	}
 	if opts.All {
 		for k, v := range store.All() {
-			fmt.Printf("%s: %s", k, v)
+			log.Printf("%s: %s", k, v)
 		}
 		return
 	}
 	if len(args) < 1 {
-		fmt.Println("invalid")
+		log.Println("invalid")
 		return
 	}
 }
 
 func main() {
+
+	output := log.New(os.Stdout, "", 0)
 
 	var opts = sup.Options{}
 
@@ -56,19 +58,19 @@ func main() {
 	flag.BoolVar(&opts.Version, "v", false, "Show the version.")
 
 	// Set a prettier "usage" screen, for "-h" and "--help" opts.
-	flag.Usage = func() { fmt.Printf("%s", usage) }
+	flag.Usage = func() { output.Printf("%s", usage) }
 
 	// Parse the opts.
 	flag.Parse()
 
 	path, err := config.Filepath()
 	if err != nil {
-		fmt.Println(err)
+		output.Println(err)
 		os.Exit(1)
 	}
 
 	store := storage.NewInMemoryStorage(path)
 	args := flag.Args()
 
-	run(store, opts, args...)
+	run(store, opts, output, args...)
 }
