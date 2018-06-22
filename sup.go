@@ -5,9 +5,10 @@ package sup
 // a simple key-value model.
 type Storer interface {
 	Put(string, string)
-	Get(string) string
+	Get(string) (string, error)
 	Load() error
 	Save() error
+	Filename() string
 }
 
 // Version number in semver.
