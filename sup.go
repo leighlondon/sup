@@ -12,5 +12,13 @@ type Storer interface {
 	Filename() string
 }
 
+// Options are the command line flags expected to be implemented.
+type Options struct {
+	All      bool
+	Delete   bool
+	Filename bool
+	Version  bool
+}
+
 // Version number in semver.
-const Version = "0.9.0"
+const Version = "0.9.1"

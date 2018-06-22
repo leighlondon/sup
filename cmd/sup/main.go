@@ -22,23 +22,16 @@ Options:
     -v     Show the version.
 `
 
-var (
-	all      bool
-	delete   bool
-	filename bool
-	version  bool
-)
-
-func run(store sup.Storer, args ...string) {
-	if version {
+func run(store sup.Storer, opts sup.Options, args ...string) {
+	if opts.Version {
 		fmt.Println(sup.Version)
 		return
 	}
-	if filename {
+	if opts.Filename {
 		fmt.Println(store.Filename())
 		return
 	}
-	if all {
+	if opts.All {
 		for k, v := range store.All() {
 			fmt.Printf("%s: %s", k, v)
 		}
@@ -52,20 +45,22 @@ func run(store sup.Storer, args ...string) {
 
 func main() {
 
-	// Add the flags.
-	flag.BoolVar(&all, "a", false, "Show all of the keys and values.")
-	flag.BoolVar(&delete, "d", false, "Delete the listed key.")
-	flag.BoolVar(&filename, "f", false, "Show the storage file path.")
-	flag.BoolVar(&version, "v", false, "Show the version.")
+	var opts = sup.Options{}
 
-	// Set a prettier "usage" screen, for "-h" and "--help" flags.
+	// Add the opts.
+	flag.BoolVar(&opts.All, "a", false, "Show all of the keys and values.")
+	flag.BoolVar(&opts.Delete, "d", false, "Delete the listed key.")
+	flag.BoolVar(&opts.Filename, "f", false, "Show the storage file path.")
+	flag.BoolVar(&opts.Version, "v", false, "Show the version.")
+
+	// Set a prettier "usage" screen, for "-h" and "--help" opts.
 	flag.Usage = func() { fmt.Printf("%s", usage) }
 
-	// Parse the flags.
+	// Parse the opts.
 	flag.Parse()
 
 	store := storage.NewInMemoryStorage()
 	args := flag.Args()
 
-	run(store, args...)
+	run(store, opts, args...)
 }
