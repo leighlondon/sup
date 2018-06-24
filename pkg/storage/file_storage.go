@@ -2,6 +2,7 @@ package storage
 
 import (
 	"encoding/json"
+	"errors"
 	"io/ioutil"
 )
 
@@ -17,9 +18,27 @@ func New(filename string) (*FileBackedStorage, error) {
 	return &FileBackedStorage{data: data, filename: filename}, err
 }
 
+// All returns all key-value pairs.
+func (s *FileBackedStorage) All() map[string]string {
+	return s.data
+}
+
 // Filename returns the filename of the storage.
 func (s *FileBackedStorage) Filename() string {
 	return s.filename
+}
+
+// Put adds a key-value pair.
+func (s *FileBackedStorage) Put(key, value string) {
+	s.data[key] = value
+}
+
+// Get returns the value or an error if not.
+func (s *FileBackedStorage) Get(key string) (string, error) {
+	if value, ok := s.data[key]; ok {
+		return value, nil
+	}
+	return "", errors.New("not found")
 }
 
 // Load updates the state from the backing store.
