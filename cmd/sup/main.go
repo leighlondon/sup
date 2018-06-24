@@ -24,23 +24,23 @@ Options:
     -v     Show the version.
 `
 
-func run(store sup.Storer, opts sup.Options, log *log.Logger, args ...string) {
+func run(store sup.Storer, opts sup.Options, out *log.Logger, args ...string) {
 	if opts.Version {
-		log.Println(sup.Version)
+		out.Println(sup.Version)
 		return
 	}
 	if opts.Filename {
-		log.Println(store.Filename())
+		out.Println(store.Filename())
 		return
 	}
 	if opts.All {
 		for k, v := range store.All() {
-			log.Printf("%s: %s", k, v)
+			out.Printf("%s: %s", k, v)
 		}
 		return
 	}
 	if len(args) < 1 {
-		log.Println("invalid")
+		out.Println("invalid")
 		return
 	}
 }
