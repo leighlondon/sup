@@ -69,8 +69,12 @@ func main() {
 		os.Exit(1)
 	}
 
-	store := storage.NewInMemoryStorage(path)
 	args := flag.Args()
+	store, err := storage.New(path)
+	if err != nil {
+		output.Println(err)
+		os.Exit(2)
+	}
 
 	run(store, opts, output, args...)
 }
