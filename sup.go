@@ -21,4 +21,4 @@ type Options struct {
 }
 
 // Version number in semver.
-const Version = "0.9.2"
+const Version = "0.10.0"
