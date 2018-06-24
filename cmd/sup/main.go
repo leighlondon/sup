@@ -33,14 +33,25 @@ func run(store sup.Storer, opts sup.Options, out *log.Logger, args ...string) {
 		out.Println(store.Filename())
 		return
 	}
-	if opts.All {
+	if opts.All || len(args) < 1 {
 		for k, v := range store.All() {
 			out.Printf("%s: %s", k, v)
 		}
 		return
 	}
-	if len(args) < 1 {
-		out.Println("invalid")
+	if len(args) == 1 {
+		v, err := store.Get(args[0])
+		if err != nil {
+			out.Printf("%s", err.Error())
+			return
+		}
+		out.Println(v)
+		return
+	}
+	if len(args) == 2 {
+		k := args[0]
+		v := args[1]
+		store.Put(k, v)
 		return
 	}
 }
